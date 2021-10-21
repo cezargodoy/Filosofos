@@ -1,3 +1,5 @@
+   // CLASS
+
 public class Desks
 {
    final static int THINKING = 1;
@@ -19,8 +21,11 @@ public class Desks
          traying[i] = 0;
       }
    }
+   
+            // TAKE
 
-   public synchronized void pegarHashi (int filosofh)
+
+   public synchronized void takeHashi (int filosofh)
    {
       filosofhs[philosophers] = EAT;
       while (philosophers[aLeft(philosophers)] == EATING || filosofhs[aRIGHT(philosopher)] == EATING)
@@ -35,14 +40,16 @@ public class Desks
          }
       }
       System.out.println(" Nothing happened with nobody");
-      traying[filosofh] = 0;
+      trying[filosofh] = 0;
       hashis[hashiLeft(philosopher)] = false;
       hashis[hashiRight(philosopher)] = false;
       philosophers[philosopher] = EATING;
       printStatusFilosofh();
       printHashi();
-      printTentativas();
+      printTrying();
    }
+   
+         // HASHI
 
    public synchronized void returningHashi (int philosopher)
    {
@@ -57,6 +64,9 @@ public class Desks
       printHashi();
       printTrying();
    }
+   
+   
+      // RIGHT
 
    public int aRight (int philosopher)
    {
@@ -121,13 +131,16 @@ public class Desks
                text = "EAT";
                break;
             case EATING :
-               text = "HAPPY EATING";
+               text = "EATING";
                break;
          }
          System.out.print(text + " ");
       }
       System.out.println("add");
    }
+   
+            // HASHI
+
 
    public void printHashi ()
    {
@@ -147,6 +160,10 @@ public class Desks
       }
       System.out.println("]");
    }
+   
+   
+            // TRYING
+
 
    public void printTrying ()
    {
