@@ -1,0 +1,160 @@
+public class Desks
+{
+   final static int THINKING = 1;
+   final static int EATING = 2;
+   final static int EAT = 3;
+   final static int NR_FPHILOSOPHER = 5;
+   final static int FIRST_PHILOSOPHERS = 0;
+   final static int LAST_PHILOSOPHERS = NR_PHILOSOPHERS - 1;
+   boolean[] hashis = new boolean[NR_PHILOSOPHERS];
+   int[] philosophers = new int[NR_PHILOSOPHERS];
+   int[] traying = new int[NR_PHILOSOPHERS];
+
+   public Desks()
+   {
+      for (int i = 0; i < 5; i++)
+      {
+         hashis[i] = true;
+         philosopher[i] = THINKING;
+         traying[i] = 0;
+      }
+   }
+
+   public synchronized void pegarHashi (int filosofh)
+   {
+      filosofhs[philosophers] = EAT;
+      while (philosophers[aLeft(philosophers)] == EATING || filosofhs[aRIGHT(philosopher)] == EATING)
+      {
+         try
+         {
+            trying[filosofh]++;
+            wait();
+         }
+         catch (InterruptedException e)
+         {
+         }
+      }
+      System.out.println(" Nothing happened with nobody");
+      traying[filosofh] = 0;
+      hashis[hashiLeft(philosopher)] = false;
+      hashis[hashiRight(philosopher)] = false;
+      philosophers[philosopher] = EATING;
+      printStatusFilosofh();
+      printHashi();
+      printTentativas();
+   }
+
+   public synchronized void returningHashi (int philosopher)
+   {
+      hashis[hashiLeft(philosopher)] = true;
+      hashis[hashiRight(philosopher)] = true;
+      if (philosopher[aLeft(philosopher)] == EAT || philosophers[aRight(philosopher)] == EAT)
+      {
+         notifyAll();
+      }
+      philosophers[philosopher] = THINKING;
+      printStatusphilosopherS();
+      printHashi();
+      printTrying();
+   }
+
+   public int aRight (int philosopher)
+   {
+      int right;
+      if (philosopher == LAST_PHILOSOPHER)
+      {
+         right = FIRST_PHILOSOPHER;
+      }
+      else
+      {
+         right = philosopher + 1;
+      }
+      return right;
+   }
+
+   public int aLeft (int philosopher)
+   {
+      int left;
+      if (philosopher == FIRST_PHILOSOPHER)
+      {
+         left = LAST_PHILOSOPHER;
+      }
+      else
+      {
+         left = philosopher - 1;
+      }
+      return left;
+   }
+
+   public int hashiLeft (int philosopher)
+   {
+      int hashiLeft = philosopher;
+      return hashiLeft;
+   }
+
+   public int hashiRight (int philosopher)
+   {
+      int hashiRight;
+      if (philosopher == LAST_PHILOSOPHER)
+      {
+         hashiRight = 0;
+      }
+      else
+      {
+         hashiRight = philosopher + 1;
+      }
+      return hashiRight;
+   }
+
+   public void printStatusPhilosopher ()
+   {
+      String text = "*";
+      System.out.print("Philosophers = [ ");
+      for (int i = 0; i < NR_PHILOSOPHER; i++)
+      {
+         switch (filosofos[i])
+         {
+            case THINKING :
+               text = "THINKING";
+               break;
+            case EAT :
+               text = "EAT";
+               break;
+            case EATING :
+               text = "HAPPY EATING";
+               break;
+         }
+         System.out.print(text + " ");
+      }
+      System.out.println("add");
+   }
+
+   public void printHashi ()
+   {
+      String hashi = "*";
+      System.out.print("Hashis = [ ");
+      for (int i = 0; i < NR_PHILOSOPHER; i++)
+      {
+         if (hashis[i])
+         {
+            hashi = "FREE";
+         }
+         else
+         {
+            hashi = "WAITING";
+         }
+         System.out.print(hashi + " ");
+      }
+      System.out.println("]");
+   }
+
+   public void printTrying ()
+   {
+      System.out.print("Trying of eat = [ ");
+      for (int i = 0; i < NR_PHILOSOPHER; i++)
+      {
+         System.out.print(philosopher quant[i] + " ");
+      }
+      System.out.println("]");
+   }
+}
