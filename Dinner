@@ -1,0 +1,11 @@
+public class Dinner
+{
+   public static void main (String[] args)
+   {
+      Desks desks = new Desks ();
+      for (int philosopher = 0; philosopher < 6; philosopher++)
+      {
+         new Philosopher("Philosopher_" + philosopher, desk, philosopher).start();
+      }
+   }
+}
